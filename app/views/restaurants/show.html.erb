@@ -1,0 +1,28 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-4">
+      <h1><%= @restaurant.name %></h1>
+      <p><%= @restaurant.address %></p>
+      <p><%= @restaurant.phone_number %></p>
+      <p><%= @restaurant.category %></p>
+    </div>
+    <div class="col-8">
+      <% @restaurant.reviews.each do |review| %>
+        <div class="rating-card">
+          <p><strong class="">Avis <%= review.rating %>/5</strong></p>
+          <p class=""><%= review.content %></p>
+        </div>
+      <% end %>
+      <%= link_to new_restaurant_review_path(@restaurant), class: "btn btn-primary" do %>
+        <i class="fas fa-plus"></i> Add a review
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <%= link_to restaurants_path do %>
+        <i class="fas fa-history"></i> Back to list
+      <% end %>
+    </div>
+  </div>
+</div>
